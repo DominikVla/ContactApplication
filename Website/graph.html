@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<body>
+
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+
+<script>
+$.post("marketing.php");
+var xArray = [];
+var yArray = [];
+for (var i in browsers) {
+  xArray.push(browsers[i].Browser);
+  yArray.push(Users[i].Amount);
+}
+
+var data = [{
+  x:xArray,
+  y:yArray,
+  type:"bar"
+}];
+
+var layout = {title:"World Wide Wine Production"};
+
+Plotly.newPlot("myPlot", data, layout);
+</script>
+
+</body>
+</html>
